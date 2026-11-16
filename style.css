@@ -1,0 +1,417 @@
+/* ══════════════════════════════════════════════════════════════
+   Dr. Neha Vashisth — Gynecologist In Jaipur
+   Ready-to-Sell Premium Medical Website CSS
+   Mobile-First · Buttery Animations · Production Ready
+══════════════════════════════════════════════════════════════ */
+
+/* ─── GOOGLE FONTS ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap');
+
+/* ─── RESET ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+img, iframe, table, video { max-width: 100%; }
+
+h1, h2, h3, h4, h5, .font-heading {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+section[id] { scroll-margin-top: 4.5rem; }
+
+/* ─── PAGE LOAD FADE IN ────────────────────────────────────── */
+@keyframes pageLoad {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+body {
+  animation: pageLoad 0.35s ease-out;
+}
+
+/* ─── NAVBAR ───────────────────────────────────────────────── */
+#mainHeader {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+#mainHeader.header-scrolled {
+  background-color: rgba(255,255,255,0.98) !important;
+  box-shadow: 0 4px 24px -4px rgba(10,107,120,0.1), 0 1px 4px rgba(0,0,0,0.04);
+}
+
+/* Nav link underline animation */
+.nav-link {
+  position: relative;
+  padding-bottom: 3px;
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+.nav-link:hover, .nav-link.active { color: #0a6b78; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, #0a6b78, #2dd4bf);
+  border-radius: 2px;
+  transition: width 0.28s cubic-bezier(0.16,1,0.3,1);
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+/* ─── HERO SECTION ─────────────────────────────────────────── */
+/* Floating badge on doctor photo */
+.shine-sweep { position: relative; overflow: hidden; }
+.shine-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -60%;
+  width: 40%; height: 200%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+  transform: rotate(25deg);
+  animation: shine 4.5s infinite ease-in-out;
+  pointer-events: none;
+}
+@keyframes shine {
+  0%        { transform: translateX(-150%) rotate(25deg); }
+  25%, 100% { transform: translateX(350%) rotate(25deg); }
+}
+
+/* Hero floating badge (10+ years) pulse */
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+.hero-badge-float {
+  animation: badge-float 3.5s ease-in-out infinite;
+}
+
+/* ─── QUICK INFO STRIP ─────────────────────────────────────── */
+.info-strip-item {
+  transition: transform 0.2s ease;
+}
+@media (hover: hover) {
+  .info-strip-item:hover { transform: translateY(-2px); }
+}
+
+/* ─── STAT COUNTER ANIMATION ───────────────────────────────── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stat-animate {
+  animation: countUp 0.6s ease-out forwards;
+}
+
+/* ─── ABOUT SECTION ────────────────────────────────────────── */
+/* Doctor profile card */
+.doctor-card {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.4s ease;
+}
+@media (hover: hover) {
+  .doctor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -8px rgba(10,107,120,0.14);
+  }
+}
+
+/* Testimonial card */
+.testimonial-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+@media (hover: hover) {
+  .testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -4px rgba(10,107,120,0.1);
+  }
+}
+
+/* Specialty cards — slide right on hover */
+.specialty-card {
+  transition: transform 0.22s cubic-bezier(0.16,1,0.3,1),
+              background-color 0.22s ease,
+              box-shadow 0.22s ease;
+}
+@media (hover: hover) {
+  .specialty-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px -2px rgba(0,0,0,0.06);
+  }
+}
+
+/* ─── REVIEW CARDS ─────────────────────────────────────────── */
+.review-card {
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+@media (hover: hover) {
+  .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -8px rgba(10,107,120,0.1), 0 4px 10px -2px rgba(0,0,0,0.04);
+    border-color: rgba(10,107,120,0.2);
+  }
+}
+
+/* Review like button */
+@keyframes pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.45); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+.pop-anim { animation: pop 0.35s cubic-bezier(0.16,1,0.3,1); }
+
+/* Review Cards Fade In on View More */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── FAQ ACCORDION ────────────────────────────────────────── */
+.faq-body {
+  transition: opacity 0.25s ease;
+}
+.faq-btn {
+  transition: background-color 0.2s ease;
+}
+.faq-btn:hover { background-color: #f8fafc; }
+
+/* FAQ icon rotation */
+.faq-btn .faq-icon {
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.faq-btn.open .faq-icon {
+  transform: rotate(180deg) !important;
+}
+
+/* ─── APPOINTMENT FORM ─────────────────────────────────────── */
+input, select, textarea {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #0a6b78 !important;
+  box-shadow: 0 0 0 3px rgba(10,107,120,0.12);
+  outline: none;
+}
+
+/* ─── MODALS ───────────────────────────────────────────────── */
+/* Appointment confirmation checkmark */
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2.5;
+  stroke: #10b981;
+  fill: none;
+  animation: draw 0.6s cubic-bezier(0.65,0,0.45,1) forwards;
+}
+.checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  stroke: #10b981;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  animation: draw 0.35s cubic-bezier(0.65,0,0.45,1) 0.55s forwards;
+}
+@keyframes draw { 100% { stroke-dashoffset: 0; } }
+
+/* Modal enter animation */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+#appointmentModal > div,
+#posterModal > div {
+  animation: modalIn 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ─── WHATSAPP ─────────────────────────────────────────────── */
+@keyframes wa-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.65), 0 8px 24px rgba(37,211,102,0.3); }
+  70%  { box-shadow: 0 0 0 16px rgba(37,211,102,0), 0 8px 24px rgba(37,211,102,0.2); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0), 0 8px 24px rgba(37,211,102,0.3); }
+}
+.wa-pulse {
+  animation: wa-pulse 2.8s infinite ease-in-out;
+}
+
+/* ─── CTA BUTTONS ──────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              background-color 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px) scale(1.015);
+  box-shadow: 0 8px 24px -4px rgba(10,107,120,0.35);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ─── SECTION ENTRY ANIMATIONS (AOS Enhancement) ──────────── */
+/* Stagger animation for grid items */
+[data-aos="stagger-up"] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition-property: transform, opacity;
+}
+[data-aos="stagger-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── SECTION DIVIDERS ─────────────────────────────────────── */
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+}
+
+/* ─── TRUST STRIP (between sections) ──────────────────────── */
+.trust-strip-item {
+  position: relative;
+}
+.trust-strip-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* ─── MOBILE BOTTOM BAR (PERMANENTLY FIXED STICKY ACTION STRIP) ── */
+.mobile-bottom-bar {
+  display: flex !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 99999 !important; /* Always sits on top of all page content */
+  background: rgba(255, 255, 255, 0.98) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 -4px 20px -2px rgba(0, 0, 0, 0.12) !important;
+  padding: 0.625rem 0.75rem !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-bottom-bar {
+    padding-bottom: calc(0.625rem + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/* Hide bottom bar on tablet/desktop (>= 768px) */
+@media (min-width: 768px) {
+  .mobile-bottom-bar {
+    display: none !important;
+  }
+}
+
+/* Ensure page bottom has clearance so footer content is never hidden by bottom bar */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 5.5rem !important;
+  }
+}
+
+/* ─── MOBILE GUARDS ────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .max-w-6xl, .max-w-4xl, .max-w-3xl, .max-w-2xl {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  #appointmentModal > div,
+  #posterModal > div {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 1.25rem;
+  }
+  #clinicStatusBadge {
+    max-width: calc(100vw - 2rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* ─── PRINT ────────────────────────────────────────────────── */
+@media print {
+  body * { visibility: hidden; }
+  #printSlipArea, #printSlipArea * { visibility: visible; }
+  #printSlipArea {
+    position: fixed;
+    top: 10mm; left: 10mm;
+    width: 190mm;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background: white;
+    font-size: 12px;
+  }
+}
+
+/* ─── CUSTOM SCROLLBAR ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #0a6b78; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #085e6a; }
+
+/* ─── SELECTION COLOR ──────────────────────────────────────── */
+::selection {
+  background: #b8dcde;
+  color: #05454f;
+}
